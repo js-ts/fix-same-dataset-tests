@@ -1,10 +1,11 @@
 apiVersion: sameproject.io/v1alpha1
 datasets:
-  USER_HISTORY:
-    ipfs: ipfs://bafybeihymreqqcrajfghv2kbz6pjll3wwq5as6ihwszlko2bp2cjos4bea/data.json
-    prod: s3://contoso_DS/reco/202101250655/user_data.parquet
-    staging: s3://contoso_test_DS/reco/202101211344/user_data.parquet
-    default: user_history.csv
+  USER_HISTORY: # <= sample dataset containing user history information
+    environments:
+      prod-edge: ipfs://bafybeihymreqqcrajfghv2kbz6pjll3wwq5as6ihwszlko2bp2cjos4bea/data.json
+      prod-dc: s3://contoso_DS/reco/202101250655/user_data.parquet
+      staging: s3://contoso_test_DS/reco/202101211344/user_data.parquet
+      default: user_history.csv
 environments:
   default:
     image_tag: library/python:3.9-slim-buster
